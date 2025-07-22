@@ -28,13 +28,55 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     <meta name="google-site-verification" content="Ny0grj0RXkm2cyq3cNX5JyPyTJyJGJUBBQFobEyh78" />
 
+    <style>
+      /* Animasi Fade-in dan Slide-up */
+      .animate {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+      }
+      .animate.visible {
+        opacity: 1;
+        transform: none;
+      }
+      /* Animasi hover pada card produk dan tombol */
+      .card:hover {
+        box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+        transform: translateY(-6px) scale(1.03);
+        transition: box-shadow 0.3s, transform 0.3s;
+      }
+      .btn:hover, .btn:focus {
+        transform: scale(1.07);
+        box-shadow: 0 2px 12px rgba(0,123,255,0.18);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      /* Animasi modal */
+      .modal.fade .modal-dialog {
+        transform: translateY(60px);
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(.4,0,.2,1);
+      }
+      .modal.fade.show .modal-dialog {
+        transform: none;
+        opacity: 1;
+      }
+      /* Animasi WhatsApp dan Back to Top */
+      .whatsapp-chat-btn, #backToTopBtn {
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .whatsapp-chat-btn:hover, #backToTopBtn:hover {
+        transform: scale(1.12);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      }
+    </style>
+
     
 </head>
 
-<body>
+<body style="padding-top: 70px;">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top animate">
         <div class="container">
             <a class="navbar-brand" href="#">Toko Pembangunan CV. Riski Akbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,7 +112,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-section d-flex align-items-center justify-content-center text-center text-white">
+    <section id="home" class="hero-section d-flex align-items-center justify-content-center text-center text-white animate">
         <div class="container">
             <h1 class="display-4">Selamat Datang di Toko Pembangunan CV. Riski Akbar</h1>
             <p class="lead">Solusi lengkap kebutuhan bahan bangunan Anda. Kualitas terjamin, harga bersaing!</p>
@@ -79,7 +121,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-5">
+    <section id="about" class="py-5 animate">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
@@ -92,7 +134,7 @@
     </section>
 
     <!-- Why Choose Us Section -->
-    <section id="why-choose-us" class="py-5 bg-light">
+    <section id="why-choose-us" class="py-5 bg-light animate">
         <div class="container">
             <h2 class="text-center mb-5">Mengapa Memilih Toko Pembangunan CV. Riski Akbar?</h2>
             <div class="row text-center">
@@ -128,7 +170,7 @@
     </section>
 
     <!-- Products Section (Placeholder) -->
-    <section id="products" class="py-5 bg-light">
+    <section id="products" class="py-5 bg-light animate">
         <div class="container">
             <h2 class="text-center mb-5">Produk Unggulan Kami</h2>
             <div class="row">
@@ -273,7 +315,7 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="py-5">
+    <section id="gallery" class="py-5 animate">
         <div class="container">
             <h2 class="text-center mb-5">Galeri Proyek & Produk</h2>
             <div class="swiper gallery-swiper">
@@ -325,7 +367,7 @@
     </section>
 
     
-    <section id="faq" class="py-5 bg-light">
+    <section id="faq" class="py-5 bg-light animate">
         <div class="container">
             <h2 class="text-center mb-5">Pertanyaan Umum (FAQ)</h2>
             <div class="accordion" id="faqAccordion">
@@ -382,7 +424,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5">
+    <section id="contact" class="py-5 animate">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
@@ -415,7 +457,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4">
+    <footer class="bg-dark text-white text-center py-4 animate">
         <div class="container">
             <p>&copy; 2025 Toko Pembangunan CV. Riski Akbar. All rights reserved.</p>
             <div class="social-icons mt-3">
@@ -434,6 +476,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <!-- Custom JS -->
     <script src="js/script.js"></script>
+    <script>
+      // Intersection Observer untuk animasi fade-in
+      document.addEventListener('DOMContentLoaded', function() {
+        var observer = new window.IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.animate').forEach(function(el) {
+          observer.observe(el);
+        });
+      });
+    </script>
     <script>
       var swiper = new Swiper('.gallery-swiper', {
         loop: true,
