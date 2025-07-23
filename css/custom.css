@@ -14,6 +14,35 @@
   transform: translateY(-6px) scale(1.03);
   transition: box-shadow 0.3s, transform 0.3s;
 }
+
+/* Border visibility for dark mode */
+.dark-mode .form-control,
+.dark-mode .card,
+.dark-mode textarea.form-control {
+  border-color: #4a90e2 !important;
+  background-color: #222 !important;
+  color: #fff;
+}
+.dark-mode .card {
+  box-shadow: 0 4px 24px rgba(74,144,226,0.18);
+}
+
+/* Border visibility for light mode */
+.form-control,
+.card,
+textarea.form-control {
+  border-color: #0d6efd !important;
+  background-color: #fff;
+  color: #222;
+}
+.card {
+  box-shadow: 0 4px 24px rgba(13,110,253,0.10);
+  border: 1px solid #dee2e6 !important;
+}
+
+.dark-mode .card {
+  border: 2px solid #4a90e2 !important;
+}
 .btn:hover, .btn:focus {
   transform: scale(1.07);
   box-shadow: 0 2px 12px rgba(0,123,255,0.18);
@@ -58,4 +87,26 @@
   box-shadow: 0 4px 16px rgba(0,0,0,0.25);
   background: #128c7e;
   color: #fff;
+}
+  
+/* Tombol utama tetap biru di dark mode */
+.dark-mode .btn-primary {
+  background-color: #0d6efd !important;
+  border-color: #0d6efd !important;
+  color: #fff !important;
+}
+
+/* Modal detail produk di dark mode */
+.dark-mode .modal-content {
+  background-color: #222 !important;
+  color: #fff !important;
+  border-color: #4a90e2 !important;
+}
+
+/* Form tetap putih di dark mode */
+.dark-mode form .form-control,
+.dark-mode form textarea.form-control {
+  background-color: #fff !important;
+  color: #222 !important;
+  border-color: #0d6efd !important;
 }
