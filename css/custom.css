@@ -110,3 +110,10 @@ textarea.form-control {
   color: #222 !important;
   border-color: #0d6efd !important;
 }
+
+/* Google Maps iframe tetap transparan/putih di dark mode */
+.dark-mode iframe[src*="google.com/maps"],
+.dark-mode .maps-embed {
+  background: #fff !important;
+  filter: none !important;
+}
