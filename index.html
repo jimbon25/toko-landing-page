@@ -99,7 +99,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#gallery">Galeri</a>
                     </li>
-                    
                     <li class="nav-item">
                         <a class="nav-link" href="#faq">FAQ</a>
                     </li>
@@ -107,6 +106,9 @@
                         <a class="nav-link" href="#contact">Kontak</a>
                     </li>
                 </ul>
+                <button id="themeToggle" class="btn btn-outline-secondary ms-3" title="Toggle Dark/Light Mode">
+                    <i class="bi bi-moon-stars" id="themeIcon"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -476,6 +478,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <!-- Custom JS -->
     <script src="js/script.js"></script>
+    <script>
+      // Dark/Light Mode Toggle
+      document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+        // Load saved theme
+        if(localStorage.getItem('theme') === 'dark') {
+          body.classList.add('dark-mode');
+          themeIcon.classList.remove('bi-moon-stars');
+          themeIcon.classList.add('bi-brightness-high');
+        }
+        themeToggle.addEventListener('click', function() {
+          body.classList.toggle('dark-mode');
+          const isDark = body.classList.contains('dark-mode');
+          if(isDark) {
+            themeIcon.classList.remove('bi-moon-stars');
+            themeIcon.classList.add('bi-brightness-high');
+            localStorage.setItem('theme', 'dark');
+          } else {
+            themeIcon.classList.remove('bi-brightness-high');
+            themeIcon.classList.add('bi-moon-stars');
+            localStorage.setItem('theme', 'light');
+          }
+        });
+      });
+    </script>
     <script>
       // Intersection Observer untuk animasi fade-in
       document.addEventListener('DOMContentLoaded', function() {
