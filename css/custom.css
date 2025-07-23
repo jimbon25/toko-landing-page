@@ -1,0 +1,61 @@
+/* Animasi Fade-in dan Slide-up */
+.animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+}
+.animate.visible {
+  opacity: 1;
+  transform: none;
+}
+/* Animasi hover pada card produk dan tombol */
+.card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  transform: translateY(-6px) scale(1.03);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.btn:hover, .btn:focus {
+  transform: scale(1.07);
+  box-shadow: 0 2px 12px rgba(0,123,255,0.18);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+/* Animasi modal */
+.modal.fade .modal-dialog {
+  transform: translateY(60px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(.4,0,.2,1);
+}
+.modal.fade.show .modal-dialog {
+  transform: none;
+  opacity: 1;
+}
+/* Animasi WhatsApp dan Back to Top */
+.whatsapp-chat-btn, #backToTopBtn {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.whatsapp-chat-btn:hover, #backToTopBtn:hover {
+  transform: scale(1.12);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+.whatsapp-chat-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 90px;
+  z-index: 9999;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  font-size: 2rem;
+  transition: box-shadow 0.2s;
+}
+.whatsapp-chat-btn:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  background: #128c7e;
+  color: #fff;
+}
