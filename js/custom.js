@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const themeToggle = document.getElementById('themeToggle');
   const themeIcon = document.getElementById('themeIcon');
   const body = document.body;
+  const navbarCollapse = document.getElementById('navbarNav');
   // Load saved theme
   if(localStorage.getItem('theme') === 'dark') {
     body.classList.add('dark-mode');
@@ -37,6 +38,11 @@ document.addEventListener('DOMContentLoaded', function() {
       themeIcon.classList.remove('bi-brightness-high');
       themeIcon.classList.add('bi-moon-stars');
       localStorage.setItem('theme', 'light');
+    }
+    // Tutup navbar jika terbuka
+    if (navbarCollapse.classList.contains('show')) {
+      var bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+      bsCollapse.hide();
     }
   });
 });
