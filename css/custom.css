@@ -117,3 +117,15 @@ textarea.form-control {
   background: #fff !important;
   filter: none !important;
 }
+
+/* Navbar brand dan hamburger sejajar di mobile */
+.navbar .container.d-flex {
+  flex-wrap: nowrap;
+}
+.navbar-brand {
+  flex-grow: 1;
+  min-width: 0;
+}
+.navbar-toggler {
+  margin-left: 8px;
+}

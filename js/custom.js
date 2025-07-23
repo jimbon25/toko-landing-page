@@ -1,3 +1,33 @@
+// Swiper Gallery Autoplay Initialization
+document.addEventListener('DOMContentLoaded', function() {
+  if (document.querySelector('.gallery-swiper')) {
+    var swiper = new Swiper('.gallery-swiper', {
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      slidesPerView: 1,
+      spaceBetween: 20,
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        992: {
+          slidesPerView: 3,
+        }
+      }
+    });
+  }
+});
 // Tutup navbar collapse saat menu diklik (mobile)
 document.addEventListener('DOMContentLoaded', function() {
   var navbarCollapse = document.getElementById('navbarNav');
