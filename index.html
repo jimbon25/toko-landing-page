@@ -66,9 +66,12 @@
                         <a class="nav-link" href="#contact">Kontak</a>
                     </li>
                 </ul>
-                <button id="themeToggle" class="btn btn-outline-secondary ms-3" title="Toggle Dark/Light Mode">
+                <div class="form-check form-switch ms-3 d-flex align-items-center">
+                  <input class="form-check-input" type="checkbox" id="themeSwitch" aria-label="Toggle Dark/Light Mode">
+                  <label class="form-check-label" for="themeSwitch" id="themeSwitchLabel" style="cursor:pointer;">
                     <i class="bi bi-moon-stars" id="themeIcon"></i>
-                </button>
+                  </label>
+                </div>
             </div>
         </div>
     </nav>
@@ -453,18 +456,23 @@
       });
     </script>
     <script>
-      // Dark/Light Mode Toggle
+      // Dark/Light Mode Toggle (Switch)
       document.addEventListener('DOMContentLoaded', function() {
-        const themeToggle = document.getElementById('themeToggle');
+        const themeSwitch = document.getElementById('themeSwitch');
         const themeIcon = document.getElementById('themeIcon');
         const body = document.body;
         // Load saved theme
         if(localStorage.getItem('theme') === 'dark') {
           body.classList.add('dark-mode');
+          themeSwitch.checked = true;
           themeIcon.classList.remove('bi-moon-stars');
           themeIcon.classList.add('bi-brightness-high');
+        } else {
+          themeSwitch.checked = false;
+          themeIcon.classList.remove('bi-brightness-high');
+          themeIcon.classList.add('bi-moon-stars');
         }
-        themeToggle.addEventListener('click', function() {
+        themeSwitch.addEventListener('change', function() {
           body.classList.toggle('dark-mode');
           const isDark = body.classList.contains('dark-mode');
           if(isDark) {
